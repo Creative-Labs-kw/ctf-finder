@@ -9,6 +9,7 @@
 
 - server
 - web url
+- ssh connection
 
 
 # usage:
