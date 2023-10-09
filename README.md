@@ -1,25 +1,15 @@
 # ctf-finder
 
-
-
-## it will work on:
-- zip file
-- file that will only work in the webshell or another Linux computer.
-- binary: static
-
-- server
-- web url
-- ssh connection
-- hexadecimal to ASCII
-
-
-# usage:
-
 ## m-file.py:
  ``` 
  python3 m-file.py 2>/dev/null
  ```
 - Upload file
+### Like: 
+- zip file
+- file that will only work in the webshell or another Linux computer.
+- binary: static
+- strings(check files without running them)
 
 ## m-server.py:
   ```
@@ -60,3 +50,11 @@ python3 m-hex.py 2>/dev/null
 python3 m-dec_b 2>/dev/null
 ```
 -  number 42 (base 10) = binary(base 2) 101010
+
+## m-hash.py:
+```
+python3 m-dec_b 2>/dev/null
+```
+- Enter the URL: http://saturn.picoctf.net:50920/admin.php
+- Enter the hash value: 2196812e91c29df34f5e217cfd639881
+- CTF{j5_15_7r4n5p4r3n7_05df90c8}
