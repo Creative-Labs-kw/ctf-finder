@@ -5,6 +5,8 @@
 ## it will work on:
 - zip file
 - file that will only work in the webshell or another Linux computer.
+- binary: static
+
 - server
 - web url
 
@@ -22,3 +24,17 @@
 ## m-web.py:
 - ` python3 m-web.py 2>/dev/null`
 - Example : URL: ` https://jupiter.challenges.picoctf.org/problem/9670/ `
+
+## m-ssh.py:
+- ` python3 m-ssh.py 2>/dev/null`
+- Example : `ssh ctf-player@venus.picoctf.net -p 60112`
+- Remote server hostname or IP address (venus.picoctf.net).
+- Username (ctf-player).
+- Port number (60112).
+- for testing i n the file :
+```
+    hostname = "venus.picoctf.net"
+    port = 60112
+    username = "ctf-player"
+    password = "6d448c9c"
+    ```
