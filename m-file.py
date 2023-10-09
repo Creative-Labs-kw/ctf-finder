@@ -1,3 +1,4 @@
+# m-file.py
 import tkinter as tk
 from tkinter import filedialog
 import re
@@ -6,22 +7,17 @@ import subprocess
 import os
 
 def print_flag(flag):
-    # ANSI escape codes for yellow color, bold, and increased text size
     formatted_flag = f"\033[1;33;1m{flag}\033[0m"
-    
-    # Print the flag
     print("-------------")
     print(formatted_flag)
     print("-------------")
 
 def check_file_for_flag(file_path):
     try:
-        with open(file_path, 'r') as file:
-            contents = file.read()
-            # Use a single regular expression pattern to match both CTF and picoCTF flags
-            flag_pattern = r'(CTF{[^}]+})|(picoCTF{[^}]+})'
-            matches = re.findall(flag_pattern, contents)
-            
+        with open(file_path, 'rb') as file:
+            contents = file.read().decode('latin-1', errors='ignore')
+
+            matches = re.findall(r'(CTF{[^}]+})|(picoCTF{[^}]+})', contents)
             if matches:
                 print("Flags found in the file:")
                 for match in matches:
@@ -75,15 +71,11 @@ def unzip_and_grep(zip_file_path):
         result = subprocess.run(['unzip', '-c', zip_file_path], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, encoding='latin-1')
         decoded_result = result.stdout
 
-        # Define a regular expression pattern to search for the flag
-        flag_pattern = r'picoCTF\{[^\}]+\}'  # Example pattern for flags in the format picoCTF{...}
-
-        # Use a set to store unique flags
+        flag_pattern = r'picoCTF\{[^\}]+\}'
         unique_flags = set()
 
-        # Search for and print unique flags in the contents
         for match in re.finditer(flag_pattern, decoded_result):
-            flag = match.group(0)  # Extract the matched flag
+            flag = match.group(0)
             unique_flags.add(flag)
 
         if unique_flags:
@@ -91,7 +83,7 @@ def unzip_and_grep(zip_file_path):
             for flag in unique_flags:
                 print_flag(flag)
                 try:
-                    pyperclip.copy(flag)  # Copy the flag to the clipboard
+                    pyperclip.copy(flag)
                     print(f"{flag} Copied")
                 except Exception as e:
                     print(f"Error copying the flag to the clipboard: {e}")
@@ -104,20 +96,18 @@ def unzip_and_grep(zip_file_path):
 def extract_flag_from_binary(file_path):
     try:
         with open(file_path, 'rb') as file:
-            contents = file.read().decode('latin-1')  # Read the binary file as text
+            contents = file.read().decode('latin-1')
 
-            # Define a regular expression pattern to search for the flag
-            flag_pattern = r'picoCTF\{[^\}]+\}'  # Example pattern for flags in the format picoCTF{...}
+            flag_pattern = r'picoCTF\{[^\}]+\}'
 
-            # Search for the flag pattern in the contents
             match = re.search(flag_pattern, contents)
 
             if match:
-                flag = match.group(0)  # Extract the matched flag
+                flag = match.group(0)
                 print("Flag found in the binary file:")
                 print_flag(flag)
                 try:
-                    pyperclip.copy(flag)  # Copy the flag to the clipboard
+                    pyperclip.copy(flag)
                     print(f"{flag} Copied")
                 except Exception as e:
                     print(f"Error copying the flag to the clipboard: {e}")
@@ -128,5 +118,5 @@ def extract_flag_from_binary(file_path):
         print(f"Error occurred while checking the binary file: {e}")
 
 if __name__ == "__main__":
-    print("Choose a file to check for CTF flags, a ZIP file to search for 'picoCTF', or a directory to search for 'picoCTF'.")
+    print("This program can check files and directories for CTF flags.")
     choose_file_or_directory()
