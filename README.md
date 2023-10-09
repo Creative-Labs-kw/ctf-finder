@@ -54,3 +54,9 @@
 python3 m-hex.py 2>/dev/null
 ```
 -  0x70 = p
+
+## decimal_to_binary.py:
+```
+python3 m-dec_b 2>/dev/null
+```
+-  number 42 (base 10) = binary(base 2) 101010
