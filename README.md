@@ -10,6 +10,7 @@
 - server
 - web url
 - ssh connection
+- hexadecimal to ASCII
 
 
 # usage:
@@ -47,3 +48,9 @@
     username = "ctf-player"
     password = "6d448c9c"
     ```
+
+## hexadecimal To ASCII(letters):
+```
+python3 m-hex.py 2>/dev/null
+```
+-  0x70 = p
