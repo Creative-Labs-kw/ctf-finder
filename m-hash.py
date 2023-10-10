@@ -1,5 +1,12 @@
+# get_flag_from_hash.py
 import requests
 import re
+
+def print_flag(flag):
+    formatted_flag = f"\033[1;33;1m{flag}\033[0m"
+    print("-------------")
+    print(formatted_flag)
+    print("-------------")
 
 def get_flag_from_hash(url, hash_value):
     try:
@@ -28,4 +35,4 @@ if __name__ == "__main__":
     hash_value = input("Enter the hash value: ")
 
     flag = get_flag_from_hash(url, hash_value)
-    print(flag)
+    print_flag(flag)

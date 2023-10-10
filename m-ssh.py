@@ -26,6 +26,12 @@ def ssh_interact(hostname, port, username, password):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def print_flag(flag):
+    formatted_flag = f"\033[1;33;1m{flag}\033[0m"
+    print("-------------")
+    print(formatted_flag)
+    print("-------------")
+
 if __name__ == "__main__":
     hostname = input("Enter the SSH hostname: ")
     port = int(input("Enter the SSH port: "))

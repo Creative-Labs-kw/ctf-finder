@@ -73,13 +73,17 @@ def display_table(data, column_names):
     else:
         print("No data found in the specified table.")
 
-def search_for_ctf_in_table(data, column_names):
+def search_for_ctf_in_table(data, column_names, table_name):
+    found_ctf = False
     if data:
         for row in data:
             for column_name in column_names:
                 cell_data = str(row[column_name])
                 if "CTF" in cell_data:
                     print_flag(cell_data)
+                    found_ctf = True
+    if not found_ctf:
+        print(f"NOT Found 'CTF' in table: {table_name}, column: {', '.join(column_names)}")
 
 def print_flag(flag):
     formatted_flag = f"\033[1;33;1m{flag}\033[0m"
@@ -102,6 +106,6 @@ if __name__ == "__main__":
             data, column_names = fetch_table_data(connection, table_name)
             print(f"Table: {table_name}")
             display_table(data, column_names)
-            search_for_ctf_in_table(data, column_names)  # Search for 'CTF' in this table's data
+            search_for_ctf_in_table(data, column_names, table_name)  # Search for 'CTF' in this table's data
     else:
         print("Failed to connect to the PostgreSQL server.")

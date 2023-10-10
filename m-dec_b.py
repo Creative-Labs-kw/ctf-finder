@@ -10,6 +10,12 @@ def decimal_to_binary(decimal_num):
     except Exception as e:
         return str(e)
 
+def print_flag(flag):
+    formatted_flag = f"\033[1;33;1m{flag}\033[0m"
+    print("-------------")
+    print(formatted_flag)
+    print("-------------")
+
 if __name__ == "__main__":
     decimal_value = input("Enter the decimal number (e.g., 42): ")
 
@@ -19,4 +25,3 @@ if __name__ == "__main__":
         print(f"The binary representation is: {binary_result}")
     except ValueError:
         print("Invalid decimal number.")
-

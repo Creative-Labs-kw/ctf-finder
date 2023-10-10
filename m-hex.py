@@ -1,4 +1,5 @@
-# m-hexadecimal.pydef 
+# hex_to_ascii.py
+
 def hex_to_ascii(hex_str):
     try:
         # Remove '0x' prefix if present
@@ -15,6 +16,12 @@ def hex_to_ascii(hex_str):
 
     except Exception as e:
         return str(e)
+
+def print_flag(flag):
+    formatted_flag = f"\033[1;33;1m{flag}\033[0m"
+    print("-------------")
+    print(formatted_flag)
+    print("-------------")
 
 if __name__ == "__main__":
     hex_value = input("Enter the hexadecimal value (e.g., 0x70): ")
