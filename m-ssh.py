@@ -1,4 +1,5 @@
 import paramiko
+import pyperclip
 
 def ssh_interact(hostname, port, username, password):
     try:
@@ -14,7 +15,8 @@ def ssh_interact(hostname, port, username, password):
             stdin, stdout, stderr = ssh.exec_command(command)
 
             if command.startswith("cat"):
-                print(stdout.read().decode('utf-8'))
+                flag = stdout.read().decode('utf-8')
+                print_flag(flag)
             elif command == "ls":
                 print(stdout.read().decode('utf-8'))
             else:
@@ -31,6 +33,8 @@ def print_flag(flag):
     print("-------------")
     print(formatted_flag)
     print("-------------")
+    pyperclip.copy(formatted_flag)
+    print("Flag copied to clipboard.")
 
 if __name__ == "__main__":
     hostname = input("Enter the SSH hostname: ")

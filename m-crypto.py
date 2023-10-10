@@ -1,3 +1,5 @@
+import pyperclip
+
 def decrypt_rot13(ciphertext):
     plaintext = ""
     for char in ciphertext:
@@ -12,12 +14,19 @@ def decrypt_rot13(ciphertext):
         plaintext += decrypted_char
     return plaintext
 
+def print_flag(flag):
+    formatted_flag = f"\033[1;33;1m{flag}\033[0m"
+    print("-------------")
+    print("Decrypted message:")
+    print(formatted_flag)
+    print("-------------")
+    pyperclip.copy(formatted_flag)
+    print("Flag copied to clipboard!")
+
 def main():
     ciphertext = input("Enter the ROT13-encoded message: ")
     plaintext = decrypt_rot13(ciphertext)
-    print("Decrypted message:")
-    print(plaintext)
+    print_flag(plaintext)
 
 if __name__ == "__main__":
     main()
-#EX: cvpbPGS{arkg_gvzr_V'yy_gel_2_ebhaqf_bs_ebg13_MAZyqFQj}

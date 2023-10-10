@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2 import extras
+import pyperclip
 
 def connect_to_postgresql(host, port, username, password, database):
     try:
@@ -79,13 +80,15 @@ def search_for_ctf_in_table(data, column_names):
             for column_name in column_names:
                 cell_data = str(row[column_name])
                 if "CTF" in cell_data:
-                    print_flag(cell_data)
+                    print_and_copy_flag(cell_data)
 
-def print_flag(flag):
+def print_and_copy_flag(flag):
     formatted_flag = f"\033[1;33;1m{flag}\033[0m"
     print("-------------")
     print(formatted_flag)
     print("-------------")
+    pyperclip.copy(formatted_flag)
+    print("Flag copied to clipboard.")
 
 if __name__ == "__main__":
     host = input("Enter the PostgreSQL host: ")

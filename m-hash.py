@@ -1,12 +1,28 @@
-# get_flag_from_hash.py
 import requests
 import re
+import pyperclip
+
+def decrypt_rot13(ciphertext):
+    plaintext = ""
+    for char in ciphertext:
+        if 'a' <= char <= 'z':
+            shift = ord('a')
+            decrypted_char = chr((ord(char) - shift + 13) % 26 + shift)
+        elif 'A' <= char <= 'Z':
+            shift = ord('A')
+            decrypted_char = chr((ord(char) - shift + 13) % 26 + shift)
+        else:
+            decrypted_char = char
+        plaintext += decrypted_char
+    return plaintext
 
 def print_flag(flag):
     formatted_flag = f"\033[1;33;1m{flag}\033[0m"
     print("-------------")
     print(formatted_flag)
     print("-------------")
+    pyperclip.copy(formatted_flag)
+    print("Flag copied to clipboard!")
 
 def get_flag_from_hash(url, hash_value):
     try:
@@ -21,7 +37,7 @@ def get_flag_from_hash(url, hash_value):
             matches = re.findall(flag_pattern, response.text)
             
             if matches:
-                return matches[0]
+                return decrypt_rot13(matches[0])  # Decrypt ROT13 before returning
             else:
                 return "No flag found in the response."
         else:

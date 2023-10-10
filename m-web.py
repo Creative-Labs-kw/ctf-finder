@@ -1,12 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import pyperclip
 
 def print_flag_line(line):
     formatted_line = f"\033[1;33;1m{line.strip()}\033[0m"
     print("-------------")
     print(formatted_line)
     print("-------------")
+    pyperclip.copy(line.strip())
+    print("Flag part copied to clipboard.")
 
 # Define the pattern as a variable
 pattern = r'flag'  # Example pattern for flags in the format picoCTF{...}

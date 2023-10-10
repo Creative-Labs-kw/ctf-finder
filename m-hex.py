@@ -1,4 +1,5 @@
 # hex_to_ascii.py
+import pyperclip
 
 def hex_to_ascii(hex_str):
     try:
@@ -22,12 +23,15 @@ def print_flag(flag):
     print("-------------")
     print(formatted_flag)
     print("-------------")
+    pyperclip.copy(formatted_flag)
+    print("Flag copied to clipboard!")
 
 if __name__ == "__main__":
     hex_value = input("Enter the hexadecimal value (e.g., 0x70): ")
 
     ascii_result = hex_to_ascii(hex_value)
     if ascii_result:
-        print(f"The ASCII representation is: {ascii_result}")
+        print("The ASCII representation is:")
+        print_flag(ascii_result)
     else:
         print("Invalid hexadecimal value.")
