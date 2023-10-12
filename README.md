@@ -2,7 +2,7 @@
 
 ## m-file.py:
  ``` 
- python3 m-file.py 2>/dev/null
+ python3 m-file.py 
  ```
 - Upload file
 ### Like: 
@@ -13,19 +13,19 @@
 
 ## m-server.py:
   ```
-  python3 m-server.py 2>/dev/null 
+  python3 m-server.py  
   ```
 - Example use Like>(nc or ncat) : ``` Host:jupiter.challenges.picoctf.org Port: 41120 ```
 
 ## m-web.py:
   ``` 
-  python3 m-web.py 2>/dev/null
+  python3 m-web.py 
   ```
 - Example : URL: ``` https://jupiter.challenges.picoctf.org/problem/9670/ ```
 
 ## m-ssh.py:
   ```
-  python3 m-ssh.py 2>/dev/null
+  python3 m-ssh.py 
   ```
 - Example : ``` ssh ctf-player@venus.picoctf.net -p 60112 ```
 - Remote server hostname or IP address (venus.picoctf.net).
@@ -41,19 +41,19 @@
 
 ## hexadecimal To ASCII(letters):
 ```
-python3 m-hex.py 2>/dev/null
+python3 m-hex.py 
 ```
 -  0x70 = p
 
 ## decimal_to_binary.py:
 ```
-python3 m-dec_b 2>/dev/null
+python3 m-dec_b 
 ```
 -  number 42 (base 10) = binary(base 2) 101010
 
 ## m-hash.py:
 ```
-python3 m-dec_b 2>/dev/null
+python3 m-dec_b 
 ```
 - Enter the URL: http://saturn.picoctf.net:50920/admin.php
 - Enter the hash value: 2196812e91c29df34f5e217cfd639881
@@ -123,4 +123,11 @@ ORDER BY table_name;
 ```
 SELECT * FROM your_table;
 ```
+## m-nc.py (to not use nc):
+
+```
+python3 m-nc.py 
+```
+- Need: file , Host , Port
+
 
